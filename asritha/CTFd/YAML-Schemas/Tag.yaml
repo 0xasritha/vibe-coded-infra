@@ -1,0 +1,18 @@
+Tag:
+  type: object
+  description: A tag for categorizing challenges
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    challenge_id:
+      type: integer
+      description: Associated challenge ID
+    value:
+      type: string
+      maxLength: 80
+      description: Tag text
+  required:
+    - challenge_id
+    - value

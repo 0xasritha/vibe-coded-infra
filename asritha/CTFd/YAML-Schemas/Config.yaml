@@ -1,0 +1,50 @@
+Config:
+  type: object
+  description: A CTFd configuration setting
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    key:
+      type: string
+      description: Configuration key
+    value:
+      type: string
+      maxLength: 65535
+      nullable: true
+      description: Configuration value
+  required:
+    - key
+
+# Common configuration keys
+ConfigKeys:
+  description: Common configuration key names
+  type: string
+  enum:
+    - ctf_name
+    - ctf_description
+    - ctf_logo
+    - ctf_theme
+    - user_mode
+    - start
+    - end
+    - freeze
+    - verify_emails
+    - mail_server
+    - mail_port
+    - mail_username
+    - mail_password
+    - mail_useauth
+    - mail_tls
+    - mailfrom_addr
+    - team_size
+    - team_creation
+    - team_disbanding
+    - incorrect_submissions_per_min
+    - account_visibility
+    - score_visibility
+    - challenge_visibility
+    - registration_visibility
+    - paused
+    - password_min_length

@@ -1,0 +1,201 @@
+{
+  "_CommentBox-!~{00n}~.js": {
+    "file": "assets/CommentBox-CZ8OEr5k.css",
+    "src": "_CommentBox-!~{00n}~.js"
+  },
+  "_CommentBox-Ddc-TqI0.js": {
+    "file": "assets/CommentBox-Ddc-TqI0.js",
+    "imports": [
+      "assets/js/pages/main.js"
+    ],
+    "css": [
+      "assets/CommentBox-CZ8OEr5k.css"
+    ]
+  },
+  "_echarts-l0sNRNKZ.js": {
+    "file": "assets/echarts-l0sNRNKZ.js"
+  },
+  "_echarts.common-BJqtDv_W.js": {
+    "file": "assets/echarts.common-BJqtDv_W.js",
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "_graphs-CmEnK4uO.js": {
+    "file": "assets/graphs-CmEnK4uO.js",
+    "imports": [
+      "assets/js/pages/main.js",
+      "_echarts.common-BJqtDv_W.js"
+    ]
+  },
+  "_htmlmixed-cvImfJ3k.js": {
+    "file": "assets/htmlmixed-cvImfJ3k.js",
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "_tab-CaZYDPV1.js": {
+    "file": "assets/tab-CaZYDPV1.js",
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/css/admin.scss": {
+    "file": "assets/admin-css-Bj5aeLSk.css",
+    "src": "assets/css/admin.scss",
+    "isEntry": true
+  },
+  "assets/css/challenge-board.scss": {
+    "file": "assets/challenge-board-css-CpAEjUPb.css",
+    "src": "assets/css/challenge-board.scss",
+    "isEntry": true
+  },
+  "assets/css/codemirror.scss": {
+    "file": "assets/codemirror-css-DRHJUI8W.css",
+    "src": "assets/css/codemirror.scss",
+    "isEntry": true
+  },
+  "assets/css/fonts.scss": {
+    "file": "assets/fonts-css-B0NUqHPX.css",
+    "src": "assets/css/fonts.scss",
+    "isEntry": true
+  },
+  "assets/css/main.scss": {
+    "file": "assets/main-css-CoszOyzj.css",
+    "src": "assets/css/main.scss",
+    "isEntry": true
+  },
+  "assets/js/pages/challenge.js": {
+    "file": "assets/pages/challenge-C9NgTXls.js",
+    "src": "assets/js/pages/challenge.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_tab-CaZYDPV1.js",
+      "_CommentBox-Ddc-TqI0.js"
+    ],
+    "css": [
+      "assets/challenge-BzO-TLNF.css"
+    ]
+  },
+  "assets/js/pages/challenges.js": {
+    "file": "assets/pages/challenges-DRbj8jNa.js",
+    "src": "assets/js/pages/challenges.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/configs.js": {
+    "file": "assets/pages/configs-f-L6mwOJ.js",
+    "src": "assets/js/pages/configs.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_tab-CaZYDPV1.js",
+      "_htmlmixed-cvImfJ3k.js"
+    ]
+  },
+  "assets/js/pages/editor.js": {
+    "file": "assets/pages/editor-CMFtG7l0.js",
+    "src": "assets/js/pages/editor.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_htmlmixed-cvImfJ3k.js",
+      "_CommentBox-Ddc-TqI0.js"
+    ]
+  },
+  "assets/js/pages/main.js": {
+    "file": "assets/pages/main-Bjt0cLMY.js",
+    "src": "assets/js/pages/main.js",
+    "isEntry": true
+  },
+  "assets/js/pages/notifications.js": {
+    "file": "assets/pages/notifications-DONaOVgn.js",
+    "src": "assets/js/pages/notifications.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/pages.js": {
+    "file": "assets/pages/pages-DmNC_pC9.js",
+    "src": "assets/js/pages/pages.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/reset.js": {
+    "file": "assets/pages/reset-D_YAgfTA.js",
+    "src": "assets/js/pages/reset.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/scoreboard.js": {
+    "file": "assets/pages/scoreboard-C5oZhdJP.js",
+    "src": "assets/js/pages/scoreboard.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/statistics.js": {
+    "file": "assets/pages/statistics-D7KM9bF7.js",
+    "src": "assets/js/pages/statistics.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_echarts.common-BJqtDv_W.js"
+    ]
+  },
+  "assets/js/pages/submissions.js": {
+    "file": "assets/pages/submissions-DsAjxJNy.js",
+    "src": "assets/js/pages/submissions.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/team.js": {
+    "file": "assets/pages/team-CyknjJd5.js",
+    "src": "assets/js/pages/team.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_graphs-CmEnK4uO.js",
+      "_CommentBox-Ddc-TqI0.js",
+      "_echarts.common-BJqtDv_W.js"
+    ]
+  },
+  "assets/js/pages/teams.js": {
+    "file": "assets/pages/teams-BVISGDYg.js",
+    "src": "assets/js/pages/teams.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  },
+  "assets/js/pages/user.js": {
+    "file": "assets/pages/user-YTKHdN4s.js",
+    "src": "assets/js/pages/user.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js",
+      "_graphs-CmEnK4uO.js",
+      "_CommentBox-Ddc-TqI0.js",
+      "_echarts.common-BJqtDv_W.js"
+    ]
+  },
+  "assets/js/pages/users.js": {
+    "file": "assets/pages/users-DBmmN71v.js",
+    "src": "assets/js/pages/users.js",
+    "isEntry": true,
+    "imports": [
+      "assets/js/pages/main.js"
+    ]
+  }
+}

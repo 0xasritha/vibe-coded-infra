@@ -1,0 +1,34 @@
+Notification:
+  type: object
+  description: A notification message
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    title:
+      type: string
+      nullable: true
+      description: Notification title
+    content:
+      type: string
+      description: Notification content (Markdown)
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Notification timestamp
+    user_id:
+      type: integer
+      nullable: true
+      description: Target user ID (null for broadcast)
+    team_id:
+      type: integer
+      nullable: true
+      description: Target team ID (null for broadcast)
+    html:
+      type: string
+      readOnly: true
+      description: Rendered HTML content
+  required:
+    - content

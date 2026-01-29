@@ -1,0 +1,68 @@
+ScoreboardEntry:
+  type: object
+  description: A scoreboard entry for a user or team
+  properties:
+    pos:
+      type: integer
+      readOnly: true
+      description: Position on scoreboard
+    account_id:
+      type: integer
+      readOnly: true
+      description: User or team ID
+    account_url:
+      type: string
+      readOnly: true
+      description: URL to account profile
+    account_type:
+      type: string
+      enum:
+        - user
+        - team
+      readOnly: true
+      description: Account type
+    oauth_id:
+      type: integer
+      nullable: true
+      readOnly: true
+      description: OAuth identifier
+    name:
+      type: string
+      readOnly: true
+      description: User or team name
+    score:
+      type: integer
+      readOnly: true
+      description: Total score
+    bracket_id:
+      type: integer
+      nullable: true
+      readOnly: true
+      description: Bracket ID
+    bracket_name:
+      type: string
+      nullable: true
+      readOnly: true
+      description: Bracket name
+    members:
+      type: array
+      readOnly: true
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          score:
+            type: integer
+      description: Team members (for team mode)
+
+Scoreboard:
+  type: object
+  description: Complete scoreboard data
+  properties:
+    data:
+      type: array
+      items:
+        $ref: "#/ScoreboardEntry"

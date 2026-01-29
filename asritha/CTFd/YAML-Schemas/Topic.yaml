@@ -1,0 +1,32 @@
+Topic:
+  type: object
+  description: A topic for organizing challenges
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    value:
+      type: string
+      maxLength: 255
+      description: Topic name (unique)
+  required:
+    - value
+
+ChallengeTopic:
+  type: object
+  description: Association between a challenge and a topic
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    challenge_id:
+      type: integer
+      description: Associated challenge ID
+    topic_id:
+      type: integer
+      description: Associated topic ID
+  required:
+    - challenge_id
+    - topic_id

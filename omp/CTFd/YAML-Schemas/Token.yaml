@@ -1,0 +1,38 @@
+Token:
+  type: object
+  description: An API access token
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    type:
+      type: string
+      maxLength: 32
+      readOnly: true
+      default: user
+      description: Token type
+    user_id:
+      type: integer
+      description: Token owner user ID
+    value:
+      type: string
+      maxLength: 128
+      readOnly: true
+      description: Token string (only shown once on creation)
+    created:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Token creation timestamp
+    expiration:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Token expiration timestamp
+    description:
+      type: string
+      nullable: true
+      description: Token purpose description
+  required:
+    - user_id

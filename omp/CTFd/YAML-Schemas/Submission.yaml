@@ -1,0 +1,96 @@
+Submission:
+  type: object
+  description: A flag submission attempt
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    challenge_id:
+      type: integer
+      description: Associated challenge ID
+    user_id:
+      type: integer
+      nullable: true
+      description: Submitting user ID
+    team_id:
+      type: integer
+      nullable: true
+      description: Submitting team ID
+    ip:
+      type: string
+      maxLength: 46
+      description: Source IP address
+    provided:
+      type: string
+      description: Submitted answer
+    type:
+      type: string
+      maxLength: 32
+      enum:
+        - correct
+        - incorrect
+      description: Submission result type
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Submission timestamp
+    challenge:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        category:
+          type: string
+        value:
+          type: integer
+      description: Challenge reference
+    user:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      description: User reference
+    team:
+      type: object
+      readOnly: true
+      nullable: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      description: Team reference
+  required:
+    - challenge_id
+
+Solve:
+  allOf:
+    - $ref: "#/Submission"
+    - type: object
+      description: A correct submission (solve)
+      properties:
+        type:
+          type: string
+          enum:
+            - correct
+          default: correct
+
+Fail:
+  allOf:
+    - $ref: "#/Submission"
+    - type: object
+      description: An incorrect submission (fail)
+      properties:
+        type:
+          type: string
+          enum:
+            - incorrect
+          default: incorrect

@@ -1,0 +1,92 @@
+Field:
+  type: object
+  description: A custom field definition for user or team profiles
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    name:
+      type: string
+      description: Field name
+    type:
+      type: string
+      maxLength: 80
+      enum:
+        - user
+        - team
+      description: Field applies to users or teams
+    field_type:
+      type: string
+      maxLength: 80
+      enum:
+        - text
+        - email
+        - number
+        - boolean
+        - date
+        - url
+        - select
+      description: HTML input type
+    description:
+      type: string
+      nullable: true
+      description: Field description
+    required:
+      type: boolean
+      default: false
+      description: Field is required
+    public:
+      type: boolean
+      default: false
+      description: Field is visible to other users
+    editable:
+      type: boolean
+      default: false
+      description: User can modify after registration
+  required:
+    - name
+    - type
+    - field_type
+
+UserField:
+  allOf:
+    - $ref: "#/Field"
+    - type: object
+      properties:
+        type:
+          enum:
+            - user
+
+TeamField:
+  allOf:
+    - $ref: "#/Field"
+    - type: object
+      properties:
+        type:
+          enum:
+            - team
+
+FieldEntry:
+  type: object
+  description: A user or team's response to a custom field
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    field_id:
+      type: integer
+      description: Associated field ID
+    value:
+      description: Field value (type depends on field_type)
+    user_id:
+      type: integer
+      nullable: true
+      description: Associated user ID
+    team_id:
+      type: integer
+      nullable: true
+      description: Associated team ID
+  required:
+    - field_id

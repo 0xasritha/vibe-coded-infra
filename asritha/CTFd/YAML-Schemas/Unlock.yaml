@@ -1,0 +1,54 @@
+Unlock:
+  type: object
+  description: A record of unlocked content (hints, solutions)
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    user_id:
+      type: integer
+      nullable: true
+      description: User who unlocked
+    team_id:
+      type: integer
+      nullable: true
+      description: Team who unlocked
+    target:
+      type: integer
+      description: ID of unlocked item
+    type:
+      type: string
+      maxLength: 32
+      enum:
+        - hints
+        - solutions
+      description: Unlock type
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Unlock timestamp
+  required:
+    - target
+    - type
+
+HintUnlock:
+  allOf:
+    - $ref: "#/Unlock"
+    - type: object
+      description: A hint unlock record
+      properties:
+        type:
+          enum:
+            - hints
+
+SolutionUnlock:
+  allOf:
+    - $ref: "#/Unlock"
+    - type: object
+      description: A solution unlock record
+      properties:
+        type:
+          enum:
+            - solutions

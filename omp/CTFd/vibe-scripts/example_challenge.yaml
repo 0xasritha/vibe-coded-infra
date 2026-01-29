@@ -1,0 +1,35 @@
+# Example challenge YAML file for use with sync_challenge.py
+#
+# Required fields: name, category, value
+# All other fields are optional
+
+name: "Example SQL Injection"
+category: "Web"
+description: |
+  Can you bypass the login page?
+
+  Connect to the challenge at `http://challenge.example.com:8080`
+
+  **Hint:** Think about what happens when you enter a single quote...
+value: 200
+type: standard
+state: visible
+max_attempts: 0  # 0 means unlimited
+
+# For dynamic challenges, uncomment these:
+# type: dynamic
+# initial: 500
+# minimum: 100
+# decay: 50
+# function: logarithmic
+
+# Connection info shown to players
+connection_info: "http://challenge.example.com:8080"
+
+# Attribution for challenge author
+attribution: "Challenge by @author"
+
+# Prerequisites (IDs of challenges that must be solved first)
+# requirements:
+#   prerequisites: [1, 2, 3]
+#   anonymize: false

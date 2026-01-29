@@ -1,0 +1,63 @@
+Page:
+  type: object
+  description: A static content page
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    title:
+      type: string
+      maxLength: 80
+      description: Page title
+    route:
+      type: string
+      maxLength: 128
+      nullable: true
+      description: URL route (unique)
+    content:
+      type: string
+      maxLength: 65535
+      nullable: true
+      description: Page content (Markdown or HTML)
+    format:
+      type: string
+      maxLength: 80
+      enum:
+        - markdown
+        - html
+      default: markdown
+      description: Content format
+    draft:
+      type: boolean
+      nullable: true
+      description: Draft status (not published)
+    hidden:
+      type: boolean
+      nullable: true
+      description: Hide from navigation
+    auth_required:
+      type: boolean
+      nullable: true
+      description: Require authentication to view
+    link_target:
+      type: string
+      maxLength: 80
+      enum:
+        - _self
+        - _blank
+        - null
+      nullable: true
+      description: Link target for navigation
+    files:
+      type: array
+      readOnly: true
+      items:
+        $ref: "File.yaml#/File"
+      description: Attached files
+    html:
+      type: string
+      readOnly: true
+      description: Rendered HTML content
+  required:
+    - title

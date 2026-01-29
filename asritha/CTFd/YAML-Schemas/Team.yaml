@@ -1,0 +1,83 @@
+Team:
+  type: object
+  description: A CTFd team for team-based competitions
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    name:
+      type: string
+      maxLength: 128
+      description: Team name
+    email:
+      type: string
+      format: email
+      maxLength: 128
+      description: Team email address (unique)
+    password:
+      type: string
+      maxLength: 128
+      writeOnly: true
+      description: Team password for joining
+    oauth_id:
+      type: integer
+      nullable: true
+      description: OAuth provider identifier
+    website:
+      type: string
+      format: uri
+      maxLength: 128
+      nullable: true
+      description: Team website URL
+    affiliation:
+      type: string
+      maxLength: 128
+      nullable: true
+      description: Organization or school
+    country:
+      type: string
+      maxLength: 32
+      nullable: true
+      description: Country code (ISO 3166-1 alpha-2)
+    secret:
+      type: string
+      maxLength: 128
+      nullable: true
+      description: Secret token for API access
+    bracket_id:
+      type: integer
+      nullable: true
+      description: Tournament bracket reference
+    hidden:
+      type: boolean
+      default: false
+      description: Hide from public leaderboard
+    banned:
+      type: boolean
+      default: false
+      description: Team is banned
+    captain_id:
+      type: integer
+      nullable: true
+      description: Team captain user ID
+    members:
+      type: array
+      readOnly: true
+      items:
+        $ref: "User.yaml#/User"
+      description: Team member users
+    created:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Team creation timestamp
+    fields:
+      type: array
+      items:
+        $ref: "User.yaml#/FieldEntry"
+      description: Custom field entries
+  required:
+    - name
+    - email
+    - password

@@ -1,0 +1,29 @@
+Solution:
+  type: object
+  description: An official solution for a challenge
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    challenge_id:
+      type: integer
+      description: Associated challenge ID (unique)
+    content:
+      type: string
+      nullable: true
+      description: Solution content (Markdown)
+    state:
+      type: string
+      maxLength: 80
+      enum:
+        - hidden
+        - visible
+      default: hidden
+      description: Solution visibility state
+    html:
+      type: string
+      readOnly: true
+      description: Rendered HTML content
+  required:
+    - challenge_id

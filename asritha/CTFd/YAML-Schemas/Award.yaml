@@ -1,0 +1,53 @@
+Award:
+  type: object
+  description: An award granting points to a user or team
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    user_id:
+      type: integer
+      nullable: true
+      description: Recipient user ID
+    team_id:
+      type: integer
+      nullable: true
+      description: Recipient team ID
+    type:
+      type: string
+      maxLength: 80
+      default: standard
+      description: Award type
+    name:
+      type: string
+      maxLength: 80
+      description: Award name
+    description:
+      type: string
+      nullable: true
+      description: Award description
+    category:
+      type: string
+      maxLength: 80
+      nullable: true
+      description: Award category
+    value:
+      type: integer
+      description: Points awarded
+    icon:
+      type: string
+      nullable: true
+      description: Award icon/image data
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Award timestamp
+    requirements:
+      type: object
+      nullable: true
+      description: Award requirements (JSON)
+  required:
+    - name
+    - value

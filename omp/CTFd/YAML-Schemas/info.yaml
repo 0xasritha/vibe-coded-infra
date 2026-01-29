@@ -1,0 +1,117 @@
+Challenge:
+  type: object
+  description: A CTF challenge
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    name:
+      type: string
+      maxLength: 80
+      description: Challenge title
+    category:
+      type: string
+      maxLength: 80
+      description: Challenge category
+    description:
+      type: string
+      nullable: true
+      description: Challenge description (Markdown)
+    attribution:
+      type: string
+      nullable: true
+      description: Author or source attribution
+    connection_info:
+      type: string
+      nullable: true
+      description: Connection details for challenge
+    type:
+      type: string
+      maxLength: 80
+      default: standard
+      description: Challenge type (standard, dynamic, etc.)
+    state:
+      type: string
+      maxLength: 80
+      enum:
+        - visible
+        - hidden
+      default: visible
+      description: Challenge visibility state
+    value:
+      type: integer
+      description: Points awarded for solving
+    max_attempts:
+      type: integer
+      default: 0
+      description: Maximum attempts allowed (0 = unlimited)
+    next_id:
+      type: integer
+      nullable: true
+      description: Next challenge in sequence (prerequisite)
+    logic:
+      type: string
+      maxLength: 80
+      enum:
+        - any
+        - all
+      default: any
+      description: Prerequisite logic type
+    initial:
+      type: integer
+      nullable: true
+      description: "Dynamic scoring: initial point value"
+    minimum:
+      type: integer
+      nullable: true
+      description: "Dynamic scoring: minimum point value"
+    decay:
+      type: integer
+      nullable: true
+      description: "Dynamic scoring: decay rate"
+    function:
+      type: string
+      maxLength: 32
+      enum:
+        - static
+        - linear
+        - logarithmic
+      default: static
+      description: Scoring function type
+    requirements:
+      type: object
+      nullable: true
+      description: Challenge prerequisites (JSON)
+    files:
+      type: array
+      readOnly: true
+      items:
+        $ref: "File.yaml#/File"
+      description: Attached files
+    tags:
+      type: array
+      readOnly: true
+      items:
+        $ref: "Tag.yaml#/Tag"
+      description: Challenge tags
+    hints:
+      type: array
+      readOnly: true
+      items:
+        $ref: "Hint.yaml#/Hint"
+      description: Challenge hints
+    flags:
+      type: array
+      readOnly: true
+      items:
+        $ref: "Flag.yaml#/Flag"
+      description: Challenge flags (admin only)
+    solves:
+      type: integer
+      readOnly: true
+      description: Number of solves
+  required:
+    - name
+    - category
+    - value

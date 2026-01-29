@@ -1,0 +1,102 @@
+User:
+  type: object
+  description: A CTFd user account
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    name:
+      type: string
+      maxLength: 128
+      description: Display name
+    email:
+      type: string
+      format: email
+      maxLength: 128
+      description: Email address (unique)
+    password:
+      type: string
+      maxLength: 128
+      writeOnly: true
+      description: Password (hashed on storage)
+    oauth_id:
+      type: integer
+      nullable: true
+      description: OAuth provider identifier
+    type:
+      type: string
+      maxLength: 80
+      description: User type (user, admin)
+    website:
+      type: string
+      format: uri
+      maxLength: 128
+      nullable: true
+      description: User website URL
+    affiliation:
+      type: string
+      maxLength: 128
+      nullable: true
+      description: Organization or school
+    country:
+      type: string
+      maxLength: 32
+      nullable: true
+      description: Country code (ISO 3166-1 alpha-2)
+    language:
+      type: string
+      maxLength: 32
+      nullable: true
+      description: Language preference
+    secret:
+      type: string
+      maxLength: 128
+      nullable: true
+      description: Secret token for API access
+    bracket_id:
+      type: integer
+      nullable: true
+      description: Tournament bracket reference
+    hidden:
+      type: boolean
+      default: false
+      description: Hide from public leaderboard
+    banned:
+      type: boolean
+      default: false
+      description: Account is banned
+    verified:
+      type: boolean
+      default: false
+      description: Email verified status
+    change_password:
+      type: boolean
+      default: false
+      description: Force password change on next login
+    team_id:
+      type: integer
+      nullable: true
+      description: Associated team ID
+    created:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Account creation timestamp
+    fields:
+      type: array
+      items:
+        $ref: "#/FieldEntry"
+      description: Custom field entries
+  required:
+    - name
+    - email
+    - password
+
+FieldEntry:
+  type: object
+  properties:
+    field_id:
+      type: integer
+    value:
+      type: string

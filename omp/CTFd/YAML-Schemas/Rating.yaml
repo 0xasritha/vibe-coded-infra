@@ -1,0 +1,53 @@
+Rating:
+  type: object
+  description: A user rating/review for a challenge
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    user_id:
+      type: integer
+      readOnly: true
+      description: Rating author user ID
+    challenge_id:
+      type: integer
+      readOnly: true
+      description: Rated challenge ID
+    value:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: Rating score
+    review:
+      type: string
+      maxLength: 2000
+      nullable: true
+      description: Review text
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Rating timestamp
+    challenge:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        category:
+          type: string
+      description: Challenge reference
+    user:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      description: User reference
+  required:
+    - value

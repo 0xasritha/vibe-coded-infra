@@ -1,0 +1,17 @@
+{
+  "attribution": "Challenge by @author",
+  "category": "Web",
+  "connection_info": "http://challenge.example.com:8080",
+  "decay": null,
+  "description": "Can you bypass the login page?\n\nConnect to the challenge at `http://challenge.example.com:8080`\n\n**Hint:** Think about what happens when you enter a single quote...\n",
+  "function": "static",
+  "initial": null,
+  "logic": "any",
+  "max_attempts": 0,
+  "minimum": null,
+  "name": "Example SQL Injection",
+  "next_id": null,
+  "state": "visible",
+  "type": "standard",
+  "value": 100
+}

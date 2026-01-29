@@ -1,0 +1,87 @@
+Comment:
+  type: object
+  description: A comment on various CTFd objects
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    type:
+      type: string
+      maxLength: 80
+      enum:
+        - challenge
+        - user
+        - team
+        - page
+      description: Comment type
+    content:
+      type: string
+      description: Comment content (Markdown)
+    date:
+      type: string
+      format: date-time
+      readOnly: true
+      description: Comment timestamp
+    author_id:
+      type: integer
+      readOnly: true
+      description: Comment author user ID
+    author:
+      type: object
+      readOnly: true
+      properties:
+        name:
+          type: string
+      description: Author reference
+    html:
+      type: string
+      readOnly: true
+      description: Rendered HTML content
+  required:
+    - type
+    - content
+
+ChallengeComment:
+  allOf:
+    - $ref: "#/Comment"
+    - type: object
+      properties:
+        challenge_id:
+          type: integer
+          description: Associated challenge ID
+      required:
+        - challenge_id
+
+UserComment:
+  allOf:
+    - $ref: "#/Comment"
+    - type: object
+      properties:
+        user_id:
+          type: integer
+          description: Associated user ID
+      required:
+        - user_id
+
+TeamComment:
+  allOf:
+    - $ref: "#/Comment"
+    - type: object
+      properties:
+        team_id:
+          type: integer
+          description: Associated team ID
+      required:
+        - team_id
+
+PageComment:
+  allOf:
+    - $ref: "#/Comment"
+    - type: object
+      properties:
+        page_id:
+          type: integer
+          description: Associated page ID
+      required:
+        - page_id

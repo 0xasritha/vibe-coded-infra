@@ -1,0 +1,61 @@
+File:
+  type: object
+  description: An uploaded file
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    type:
+      type: string
+      maxLength: 80
+      readOnly: true
+      enum:
+        - standard
+        - challenge
+        - page
+        - solution
+      default: standard
+      description: File type
+    location:
+      type: string
+      readOnly: true
+      description: File path or URL
+    sha1sum:
+      type: string
+      maxLength: 40
+      nullable: true
+      description: SHA1 checksum of file
+
+ChallengeFile:
+  allOf:
+    - $ref: "#/File"
+    - type: object
+      properties:
+        challenge_id:
+          type: integer
+          description: Associated challenge ID
+      required:
+        - challenge_id
+
+PageFile:
+  allOf:
+    - $ref: "#/File"
+    - type: object
+      properties:
+        page_id:
+          type: integer
+          description: Associated page ID
+      required:
+        - page_id
+
+SolutionFile:
+  allOf:
+    - $ref: "#/File"
+    - type: object
+      properties:
+        solution_id:
+          type: integer
+          description: Associated solution ID
+      required:
+        - solution_id

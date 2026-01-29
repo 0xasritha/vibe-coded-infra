@@ -1,0 +1,29 @@
+Flag:
+  type: object
+  description: A flag (answer) for a challenge
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    challenge_id:
+      type: integer
+      description: Associated challenge ID
+    type:
+      type: string
+      maxLength: 80
+      enum:
+        - static
+        - regex
+      description: Flag type
+    content:
+      type: string
+      description: Flag content/answer
+    data:
+      type: string
+      nullable: true
+      description: Type-specific data (e.g., case sensitivity settings)
+  required:
+    - challenge_id
+    - type
+    - content

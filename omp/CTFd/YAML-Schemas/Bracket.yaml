@@ -1,0 +1,26 @@
+Bracket:
+  type: object
+  description: A tournament bracket for grouping participants
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    name:
+      type: string
+      maxLength: 255
+      description: Bracket name
+    description:
+      type: string
+      nullable: true
+      description: Bracket description
+    type:
+      type: string
+      maxLength: 80
+      enum:
+        - users
+        - teams
+      description: Bracket type
+  required:
+    - name
+    - type

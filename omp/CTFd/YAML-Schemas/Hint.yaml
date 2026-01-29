@@ -1,0 +1,40 @@
+Hint:
+  type: object
+  description: A hint for a challenge
+  properties:
+    id:
+      type: integer
+      readOnly: true
+      description: Unique identifier
+    title:
+      type: string
+      maxLength: 80
+      nullable: true
+      description: Hint title
+    type:
+      type: string
+      maxLength: 80
+      readOnly: true
+      default: standard
+      description: Hint type
+    challenge_id:
+      type: integer
+      description: Associated challenge ID
+    content:
+      type: string
+      nullable: true
+      description: Hint content (Markdown)
+    cost:
+      type: integer
+      default: 0
+      description: Points deducted when unlocked
+    requirements:
+      type: object
+      nullable: true
+      description: Unlock prerequisites (JSON)
+    html:
+      type: string
+      readOnly: true
+      description: Rendered HTML content
+  required:
+    - challenge_id

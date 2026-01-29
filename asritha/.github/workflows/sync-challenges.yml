@@ -1,0 +1,85 @@
+name: Sync Challenges to CTFd
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Challenges/**'
+  workflow_dispatch:
+
+jobs:
+  discover-challenges:
+    name: Discover Challenges
+    runs-on: ubuntu-latest
+    outputs:
+      challenges: ${{ steps.find-challenges.outputs.challenges }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find all challenge directories
+        id: find-challenges
+        run: |
+          # Find all info.yaml files and extract their directory paths
+          challenges=$(find Challenges -name "info.yaml" -type f | while read file; do
+            dir=$(dirname "$file")
+            # Extract category and challenge name for display
+            category=$(echo "$dir" | cut -d'/' -f2)
+            challenge=$(echo "$dir" | cut -d'/' -f3)
+            # Output as JSON object
+            echo "{\"path\":\"$file\",\"category\":\"$category\",\"name\":\"$challenge\"}"
+          done | jq -s -c '.')
+
+          echo "Found challenges: $challenges"
+          echo "challenges=$challenges" >> $GITHUB_OUTPUT
+
+      - name: Validate challenges found
+        run: |
+          challenges='${{ steps.find-challenges.outputs.challenges }}'
+          if [ "$challenges" = "[]" ] || [ -z "$challenges" ]; then
+            echo "No challenges found in Challenges/ directory"
+            echo "Expected structure: Challenges/<Category>/<ChallengeName>/info.yaml"
+            exit 0
+          fi
+          echo "Found $(echo '${{ steps.find-challenges.outputs.challenges }}' | jq length) challenges"
+
+  sync-challenge:
+    name: "Sync: ${{ matrix.challenge.category }}/${{ matrix.challenge.name }}"
+    needs: discover-challenges
+    if: ${{ needs.discover-challenges.outputs.challenges != '[]' && needs.discover-challenges.outputs.challenges != '' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        challenge: ${{ fromJson(needs.discover-challenges.outputs.challenges) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema requests
+
+      - name: Sync challenge to CTFd
+        env:
+          CTFD_URL: ${{ secrets.CTFD_URL }}
+          CTFD_API_TOKEN: ${{ secrets.CTFD_API_TOKEN }}
+        run: |
+          echo "Syncing challenge: ${{ matrix.challenge.category }}/${{ matrix.challenge.name }}"
+          python CTFd/vibe-scripts/sync_challenge.py "${{ matrix.challenge.path }}"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Challenge Sync Result" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Category:** ${{ matrix.challenge.category }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Challenge:** ${{ matrix.challenge.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Path:** \`${{ matrix.challenge.path }}\`" >> $GITHUB_STEP_SUMMARY
